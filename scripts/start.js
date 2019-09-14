@@ -120,6 +120,11 @@ checkBrowsers(paths.appPath, isInteractive)
       proxyConfig,
       urls.lanUrlForConfig
     );
+    serverConfig.proxy = {
+        '/api': {
+            target: 'http://localhost:5000'
+        }
+    };
     const devServer = new WebpackDevServer(compiler, serverConfig);
     // Launch WebpackDevServer.
     devServer.listen(port, HOST, err => {
